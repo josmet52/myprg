@@ -8,15 +8,20 @@ import busio
 from adafruit_seesaw.seesaw import Seesaw
 
 
-i_mean_max = 60
+i_mean_max = 900
 
 i2c_bus = busio.I2C(SCL, SDA)
 
 ss = Seesaw(i2c_bus, addr=0x36)
 touch = 0
 
-print(str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + " Mesure started (average on "
-      + str(    '{:.0f}'.format(i_mean_max / 60)) + " minute(s)")
+if i_mean_max > 60:
+    print(str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + " Mesure started (average on "
+          + str(    '{:.0f}'.format(i_mean_max / 60)) + " minute(s))")
+else:
+    print(str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + " Mesure started (average on "
+          + str(    '{:.0f}'.format(i_mean_max)) + " secondes)")
+
 while True:
 
     i_mean = 0
