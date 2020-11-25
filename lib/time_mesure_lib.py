@@ -45,8 +45,8 @@ if __name__ == '__main__':
     with Exec_time_mesurment() as etm:
         while i < n:
             i += 1
-    elspsed_time = etm.interval
+    elapsed_time = etm.interval
     
-    print("Temps écoulé : " + str(int(elpased_time * 1E6)) + " us")
+    print("Temps écoulé : " + str(int(elapsed_time * 1E6)) + " us")
     
     
